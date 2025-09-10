@@ -7,7 +7,7 @@ import { FilterType } from '@/lib/localStorage';
 
 export default function FilterTabs() {
   const dispatch = useAppDispatch();
-  const { filter, todos } = useAppSelector((state) => state.todos);
+  const { filter, todos } = useAppSelector(state => state.todos);
 
   const handleFilterChange = (value: string) => {
     dispatch(setFilter(value as FilterType));
@@ -17,7 +17,7 @@ export default function FilterTabs() {
   const completedTodosCount = todos.filter(todo => todo.completed).length;
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+    <div className="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
       <Tabs value={filter} onValueChange={handleFilterChange} className="w-full sm:w-auto">
         <TabsList className="grid w-full grid-cols-3 sm:w-auto">
           <TabsTrigger value="all" className="px-6">
@@ -32,7 +32,7 @@ export default function FilterTabs() {
         </TabsList>
       </Tabs>
 
-      <div className="text-sm text-muted-foreground">
+      <div className="text-muted-foreground text-sm">
         {activeTodosCount > 0 && (
           <span>
             {activeTodosCount} {activeTodosCount === 1 ? 'item' : 'items'} left

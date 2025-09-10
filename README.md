@@ -46,9 +46,9 @@ A beautiful and feature-rich todo application built with Next.js 15, Redux Toolk
 
 3. **Run the development server**
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
@@ -91,11 +91,13 @@ A beautiful and feature-rich todo application built with Next.js 15, Redux Toolk
 
 ## 🔧 Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
+- `npm run dev` - Format code and start development server
+- `npm run build` - Format code and build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript compiler
+- `npm run format` - Format all files with Prettier
+- `npm run format:check` - Check if files are formatted correctly
+- `npm run format:fix` - Fix formatting issues
 
 ## 📱 Usage
 
@@ -140,6 +142,49 @@ Colors can be customized in the `app/globals.css` file using CSS custom properti
 ### Animations
 
 Animations are handled by Framer Motion and can be customized in individual components.
+
+## 🛠️ Code Formatting
+
+This project uses **Prettier** for consistent code formatting with the following configuration:
+
+### Prettier Configuration
+
+- **Print Width**: 120 characters
+- **Tab Width**: 2 spaces
+- **Quotes**: Single quotes
+- **Semicolons**: Always
+- **Trailing Commas**: ES5
+- **Bracket Spacing**: Enabled
+- **Arrow Parens**: Avoid when possible
+
+### Automatic Formatting
+
+- **On Save**: VS Code automatically formats files when saved
+- **Pre-commit**: Git hooks format staged files before commit
+- **Build Process**: Prettier runs before `dev` and `build` commands
+- **Tailwind Classes**: Automatic sorting with `prettier-plugin-tailwindcss`
+
+### VS Code Integration
+
+The project includes `.vscode/settings.json` with:
+
+- Format on save enabled
+- Prettier as default formatter
+- ESLint auto-fix on save
+- Consistent editor settings
+
+### Manual Formatting Commands
+
+```bash
+npm run format        # Format all files
+npm run format:check  # Check formatting without changes
+npm run format:fix    # Fix formatting issues
+```
+
+### Git Hooks
+
+- **Pre-commit**: Automatically formats staged files
+- **Lint-staged**: Only formats changed files for faster commits
 
 ## 📊 State Management
 

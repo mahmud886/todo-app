@@ -41,7 +41,7 @@ const todosSlice = createSlice({
       state.todos = state.todos.filter(todo => todo.id !== action.payload);
     },
 
-    clearCompleted: (state) => {
+    clearCompleted: state => {
       state.todos = state.todos.filter(todo => !todo.completed);
     },
 
@@ -53,7 +53,7 @@ const todosSlice = createSlice({
       return action.payload;
     },
 
-    toggleAllTodos: (state) => {
+    toggleAllTodos: state => {
       const allCompleted = state.todos.every(todo => todo.completed);
       state.todos.forEach(todo => {
         todo.completed = !allCompleted;

@@ -24,29 +24,29 @@ export default function HomePage() {
   }, [dispatch]);
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-background via-background to-muted/20'>
-      <div className='container mx-auto px-4 py-8 max-w-4xl relative'>
-        <div className='absolute top-4 right-4'>
+    <div className="from-background via-background to-muted/20 min-h-screen bg-gradient-to-br">
+      <div className="relative container mx-auto max-w-4xl px-4 py-8">
+        <div className="absolute top-4 right-4">
           <ThemeToggle />
         </div>
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className='text-center mb-8'>
-          <div className='flex items-center justify-center gap-3 mb-4'>
-            <div className='p-3 bg-primary rounded-2xl'>
-              <CheckSquare className='w-8 h-8 text-primary-foreground' />
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 text-center">
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <div className="bg-primary rounded-2xl p-3">
+              <CheckSquare className="text-primary-foreground h-8 w-8" />
             </div>
-            <h1 className='text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent'>
+            <h1 className="from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent">
               Todo App
             </h1>
           </div>
-          <p className='text-lg text-muted-foreground max-w-md mx-auto'>
+          <p className="text-muted-foreground mx-auto max-w-md text-lg">
             Stay organized and productive with this modern task manager
           </p>
         </motion.div>
 
         {/* Main Content */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-          <Card className='p-6 shadow-xl border-0 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60'>
+          <Card className="bg-card/95 supports-[backdrop-filter]:bg-card/60 border-0 p-6 shadow-xl backdrop-blur">
             <AddTodo />
             <FilterTabs />
             <TodoList />
@@ -58,7 +58,8 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className='text-center mt-8 text-sm text-muted-foreground'>
+          className="text-muted-foreground mt-8 text-center text-sm"
+        >
           <p>Built with ❤️ using Next.js 15, Redux Toolkit, and shadcn/ui</p>
         </motion.footer>
       </div>

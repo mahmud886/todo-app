@@ -60,63 +60,67 @@ export default function TodoItem({ todo, index }: TodoItemProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.2, delay: index * 0.05 }}
-      layout>
-      <Card className='p-4 mb-3 bg-card hover:shadow-md transition-shadow'>
-        <div className='flex items-center gap-3'>
-          <Checkbox checked={todo.completed} onCheckedChange={handleToggle} className='w-5 h-5' />
+      layout
+    >
+      <Card className="bg-card mb-3 p-4 transition-shadow hover:shadow-md">
+        <div className="flex items-center gap-3">
+          <Checkbox checked={todo.completed} onCheckedChange={handleToggle} className="h-5 w-5" />
 
-          <div className='flex-1'>
+          <div className="flex-1">
             {isEditing ? (
-              <div className='flex gap-2'>
+              <div className="flex gap-2">
                 <Input
                   value={editText}
-                  onChange={(e) => setEditText(e.target.value)}
+                  onChange={e => setEditText(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className='flex-1'
+                  className="flex-1"
                   autoFocus
                 />
-                <Button size='sm' variant='default' onClick={handleSaveEdit} disabled={!editText.trim()}>
-                  <Check className='w-4 h-4' />
+                <Button size="sm" variant="default" onClick={handleSaveEdit} disabled={!editText.trim()}>
+                  <Check className="h-4 w-4" />
                 </Button>
-                <Button size='sm' variant='outline' onClick={handleCancelEdit}>
-                  <X className='w-4 h-4' />
+                <Button size="sm" variant="outline" onClick={handleCancelEdit}>
+                  <X className="h-4 w-4" />
                 </Button>
               </div>
             ) : (
               <span
                 className={`text-lg select-none ${
-                  todo.completed ? 'line-through text-muted-foreground' : 'text-foreground'
-                } transition-colors cursor-pointer`}
-                onClick={handleToggle}>
+                  todo.completed ? 'text-muted-foreground line-through' : 'text-foreground'
+                } cursor-pointer transition-colors`}
+                onClick={handleToggle}
+              >
                 {todo.text}
               </span>
             )}
           </div>
 
           {!isEditing && (
-            <div className='flex gap-1'>
+            <div className="flex gap-1">
               <Button
-                size='sm'
-                variant='ghost'
+                size="sm"
+                variant="ghost"
                 onClick={handleEdit}
-                className='text-muted-foreground hover:text-foreground'>
-                <Edit className='w-4 h-4' />
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <Edit className="h-4 w-4" />
               </Button>
               <Button
-                size='sm'
-                variant='ghost'
+                size="sm"
+                variant="ghost"
                 onClick={handleDelete}
-                className='text-muted-foreground hover:text-destructive'>
-                <Trash2 className='w-4 h-4' />
+                className="text-muted-foreground hover:text-destructive"
+              >
+                <Trash2 className="h-4 w-4" />
               </Button>
             </div>
           )}
         </div>
 
-        <div className='text-xs text-muted-foreground mt-2 ml-8'>
+        <div className="text-muted-foreground mt-2 ml-8 text-xs">
           Created: {new Date(todo.createdAt).toLocaleDateString()}
           {todo.updatedAt !== todo.createdAt && (
-            <span className='ml-2'>• Updated: {new Date(todo.updatedAt).toLocaleDateString()}</span>
+            <span className="ml-2">• Updated: {new Date(todo.updatedAt).toLocaleDateString()}</span>
           )}
         </div>
       </Card>

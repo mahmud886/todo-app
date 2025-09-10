@@ -26,23 +26,23 @@ export default function AddTodo() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 mb-6">
+    <form onSubmit={handleSubmit} className="mb-6 flex gap-2">
       <Input
         type="text"
         placeholder="What needs to be done?"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
         onKeyDown={handleKeyDown}
-        className="flex-1 text-lg py-6 px-4 border-2 focus:border-primary transition-colors"
+        className="focus:border-primary flex-1 border-2 px-4 py-6 text-lg transition-colors"
         autoFocus
       />
       <Button
         type="submit"
         size="lg"
-        className="px-6 py-6 bg-primary hover:bg-primary/90 transition-colors"
+        className="bg-primary hover:bg-primary/90 px-6 py-6 transition-colors"
         disabled={!text.trim()}
       >
-        <Plus className="w-5 h-5" />
+        <Plus className="h-5 w-5" />
       </Button>
     </form>
   );

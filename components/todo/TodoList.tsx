@@ -10,9 +10,9 @@ import TodoItem from './TodoItem';
 
 export default function TodoList() {
   const dispatch = useAppDispatch();
-  const { todos, filter } = useAppSelector((state) => state.todos);
+  const { todos, filter } = useAppSelector(state => state.todos);
 
-  const filteredTodos = todos.filter((todo) => {
+  const filteredTodos = todos.filter(todo => {
     switch (filter) {
       case 'active':
         return !todo.completed;
@@ -23,9 +23,8 @@ export default function TodoList() {
     }
   });
 
-  const hasCompletedTodos = todos.some((todo) => todo.completed);
-  const hasActiveTodos = todos.some((todo) => !todo.completed);
-  const allCompleted = todos.length > 0 && todos.every((todo) => todo.completed);
+  const hasCompletedTodos = todos.some(todo => todo.completed);
+  const allCompleted = todos.length > 0 && todos.every(todo => todo.completed);
 
   const handleClearCompleted = () => {
     dispatch(clearCompleted());
@@ -40,13 +39,14 @@ export default function TodoList() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className='text-center py-12'>
-        <Card className='p-8 bg-muted/50'>
-          <div className='flex flex-col items-center gap-4'>
-            <Square className='w-16 h-16 text-muted-foreground' />
+        className="py-12 text-center"
+      >
+        <Card className="bg-muted/50 p-8">
+          <div className="flex flex-col items-center gap-4">
+            <Square className="text-muted-foreground h-16 w-16" />
             <div>
-              <h3 className='text-xl font-semibold text-muted-foreground mb-2'>No todos yet</h3>
-              <p className='text-muted-foreground'>Add a todo above to get started!</p>
+              <h3 className="text-muted-foreground mb-2 text-xl font-semibold">No todos yet</h3>
+              <p className="text-muted-foreground">Add a todo above to get started!</p>
             </div>
           </div>
         </Card>
@@ -59,13 +59,14 @@ export default function TodoList() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className='text-center py-12'>
-        <Card className='p-8 bg-muted/50'>
-          <div className='flex flex-col items-center gap-4'>
-            <CheckSquare className='w-16 h-16 text-muted-foreground' />
+        className="py-12 text-center"
+      >
+        <Card className="bg-muted/50 p-8">
+          <div className="flex flex-col items-center gap-4">
+            <CheckSquare className="text-muted-foreground h-16 w-16" />
             <div>
-              <h3 className='text-xl font-semibold text-muted-foreground mb-2'>No {filter} todos</h3>
-              <p className='text-muted-foreground'>
+              <h3 className="text-muted-foreground mb-2 text-xl font-semibold">No {filter} todos</h3>
+              <p className="text-muted-foreground">
                 {filter === 'active' && 'All tasks completed! Great job! 🎉'}
                 {filter === 'completed' && 'No completed tasks yet'}
               </p>
@@ -77,22 +78,23 @@ export default function TodoList() {
   }
 
   return (
-    <div className='space-y-4'>
+    <div className="space-y-4">
       {/* Bulk Actions */}
       {todos.length > 1 && (
-        <div className='flex flex-wrap gap-2 mb-4'>
-          <Button variant='outline' size='sm' onClick={handleToggleAll} className='flex items-center gap-2'>
-            <CheckSquare className='w-4 h-4' />
+        <div className="mb-4 flex flex-wrap gap-2">
+          <Button variant="outline" size="sm" onClick={handleToggleAll} className="flex items-center gap-2">
+            <CheckSquare className="h-4 w-4" />
             {allCompleted ? 'Mark all as incomplete' : 'Mark all as complete'}
           </Button>
 
           {hasCompletedTodos && (
             <Button
-              variant='outline'
-              size='sm'
+              variant="outline"
+              size="sm"
               onClick={handleClearCompleted}
-              className='flex items-center gap-2 text-destructive hover:text-destructive'>
-              <Trash2 className='w-4 h-4' />
+              className="text-destructive hover:text-destructive flex items-center gap-2"
+            >
+              <Trash2 className="h-4 w-4" />
               Clear completed
             </Button>
           )}
@@ -100,7 +102,7 @@ export default function TodoList() {
       )}
 
       {/* Todo Items */}
-      <AnimatePresence mode='popLayout'>
+      <AnimatePresence mode="popLayout">
         {filteredTodos.map((todo, index) => (
           <TodoItem key={todo.id} todo={todo} index={index} />
         ))}
